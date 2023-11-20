@@ -37,6 +37,13 @@ def chat(model: str, tokens: int, system_prompt: str, verbose: bool = False):
         if verbose:
             print("Usage: ", response.usage)
 
+        messages.append(
+            {
+                "role": "assistant",
+                "content": response.choices[0].message.content,
+            }
+        )
+
         newinput = user_input()
         while newinput.lower() == "reset":
             messages = [{"role": "system", "content": "You are an expert " + EXPERTS[randrange(len(EXPERTS))]}]
@@ -45,12 +52,6 @@ def chat(model: str, tokens: int, system_prompt: str, verbose: bool = False):
             print("================")
             newinput = user_input()
 
-        messages.append(
-            {
-                "role": "assistant",
-                "content": response.choices[0].message.content,
-            }
-        )
         messages.append(
             {
                 "role": "user",
