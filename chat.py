@@ -17,6 +17,7 @@ def user_input() -> str:
     return input()
 
 def chat(model: str, tokens: int, system_prompt: str, verbose: bool = False):
+    print(f"The model {model} has been told \"{system_prompt}\"")
     print("Please enter your question or type 'Done' when Done or reset for a new chat.")
 
     messages = []
