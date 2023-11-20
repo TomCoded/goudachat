@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-import openai
-import argparse
-
-from typing import List
+from typing import Dict, List
 from random import randrange
+import argparse
+import openai
 
 from APIKEY import API_KEY
 
@@ -24,7 +23,7 @@ def chat(model: str, tokens: int, system_prompt: str, verbose: bool = False):
         "Please enter your question or type 'Done' when Done or reset for a new chat."
     )
 
-    messages = []
+    messages: List[Dict[str,str]] = []
     messages.append({"role": "system", "content": system_prompt})
     messages.append({"role": "user", "content": user_input()})
 
