@@ -38,8 +38,8 @@ def chat(model: str, tokens: int, system_prompt: str, verbose: bool = False):
             print("Usage: ", response.usage)
 
         newinput = user_input()
-        if newinput.lower() == "reset":
-            messages = [{"role": "system", "content": "You are an expert" + EXPERTS[randrange(len(EXPERTS))]}]
+        while newinput.lower() == "reset":
+            messages = [{"role": "system", "content": "You are an expert " + EXPERTS[randrange(len(EXPERTS))]}]
             print("New chat begins.")
             print(f"AI is told: {messages[-1]['content']}")
             print("================")
