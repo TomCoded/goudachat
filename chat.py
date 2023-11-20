@@ -23,7 +23,7 @@ def chat(model: str, tokens: int, system_prompt: str, verbose: bool = False):
         "Please enter your question or type 'Done' when Done or reset for a new chat."
     )
 
-    messages: List[Dict[str,str]] = []
+    messages: List[Dict[str, str]] = []
     messages.append({"role": "system", "content": system_prompt})
     messages.append({"role": "user", "content": user_input()})
 
@@ -39,8 +39,9 @@ def chat(model: str, tokens: int, system_prompt: str, verbose: bool = False):
 
         newinput = user_input()
         if newinput.lower() == "reset":
-            messages = [{"role": "system", "content": system_prompt}]
+            messages = [{"role": "system", "content": EXPERTS[randrange(len(EXPERTS))]}]
             print("New chat begins.")
+            print(f"AI is told: {messages[-1]['content']}")
             print("================")
             newinput = user_input()
 
