@@ -3,6 +3,8 @@ import openai
 import argparse
 
 from typing import List
+from random import randrange
+
 from APIKEY import API_KEY
 
 openai.api_key = API_KEY
@@ -55,7 +57,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-m','--model',help="name of model to use",default='gpt-4-1106-preview')
     parser.add_argument('-t','--tokens',help="token limit suggestion",default=TOKEN_LIMIT)
-    parser.add_argument('-p','--prompt',help="system propt such as you are a helpful assistant", default="you are an expert " + EXPERTS[random.randint(len(EXPERTS)))
+    parser.add_argument('-p','--prompt',help="system propt such as you are a helpful assistant", default="you are an expert " + EXPERTS[randrange(len(EXPERTS))])
     parser.add_argument('-l','--list-models',help="List models instead of querying one", action='store_true')
     parser.add_argument('-v','--verbose',help="print additional output", action='store_true')
     args = parser.parse_args()
